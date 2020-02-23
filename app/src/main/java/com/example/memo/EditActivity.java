@@ -50,6 +50,8 @@ public class EditActivity extends AppCompatActivity {
         mMemoEdit=(EditText)findViewById(R.id.editText);
         gallery = (Gallery) findViewById(R.id.gallery);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        galleryViewAdapter = new GalleryViewAdapter(getApplicationContext(), R.layout.gallery_row, imageList);
+        gallery.setAdapter(galleryViewAdapter);
 
         Intent intent = new Intent(this.getIntent());
         //flag가 1 이면 저장된 메모 불러오기
@@ -64,8 +66,7 @@ public class EditActivity extends AppCompatActivity {
                 for(int i=0; i<images.length; i++) {
                     imageList.add(images[i]);
                 }
-                galleryViewAdapter = new GalleryViewAdapter(getApplicationContext(), R.layout.gallery_row, imageList);
-                gallery.setAdapter(galleryViewAdapter);
+                galleryViewAdapter.notifyDataSetChanged();
             }
 
             mMemoEdit.setText(memoData);
@@ -124,7 +125,7 @@ public class EditActivity extends AppCompatActivity {
                 Toast.makeText(this,"삭제 완료", Toast.LENGTH_LONG).show();
                 break;
             }
-            // 3. 저장된 이미지 삭제하기 : gallery를 뷰를 이용해서 메뉴를 누르면 gallery 뷰의 selectedItem이 삭제되도록 구현함
+            // 3. 저장된 이미지 삭제하기 : gallery 뷰를 이용해서 메뉴를 누르면 gallery 뷰의 selectedItem이 삭제되도록 구현함
             case R.id.delete_image: {
                 if(imageList.size()>0) {
                     imageList.remove(gallery.getSelectedItemPosition());
@@ -173,7 +174,7 @@ public class EditActivity extends AppCompatActivity {
                 galleryViewAdapter.notifyDataSetChanged();
                 break;
             }*/
-            //7. 갤러리의 사진 첨부
+            //7. 구글 포토 앱으로 사진 첨부
             case R.id.add_image_gallery: {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     try {
@@ -210,13 +211,14 @@ public class EditActivity extends AppCompatActivity {
         int index = imageList.size();
 
         switch (requestCode) {
-            //앨범에서 첨부할때
+            //포토 앱에서 첨부할때
             case REQUEST_TAKE_ALBUM: {
                 if (resultCode == Activity.RESULT_OK) {
                     // 멀티 선택을 지원하지 않는 기기에서는 getClipdata()가 없음 => getData()로 접근해야 함
                     if (data.getClipData() == null) {
                         imageList.add(String.valueOf(data.getData()));
-                    } else {
+                    }
+                    else {
                         ClipData clipData = data.getClipData();
 
                         if (clipData.getItemCount() > 10) {         //너무 많은 선택을 막기위해 10개 이하로 선택하도록 함
@@ -241,7 +243,8 @@ public class EditActivity extends AppCompatActivity {
                             String path = getRealPathFromURI(Uri.parse(imageList.get(i)));
                             imageList.remove(i);
                             imageList.add(i, path);
-                        } else {
+                        }
+                        else {
                             // 갤러리 : 파일 절대 경로 리턴함(변환은 필요없고, file://를 빼줘야 업로드시 new File에서 이용)
                             String path = imageList.get(i).replace("file://", "");
                             imageList.remove(i);

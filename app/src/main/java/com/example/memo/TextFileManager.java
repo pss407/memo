@@ -129,15 +129,21 @@ public class TextFileManager {
 
     public String[] viewMemo() {
         File f = new File("/data/data/com.example.memo/files");
-        File[] files = f.listFiles(new FileFilter() {
-            @Override
-            public boolean accept(File pathname) {
-                return pathname.getName().toLowerCase(Locale.US).endsWith(".txt"); //확장자
+        String[] list = null;
+        if(f.exists()) {
+            File[] files = f.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    return pathname.getName().toLowerCase(Locale.US).endsWith(".txt"); //확장자
+                }
+            });
+
+            if (files.length > 0) {
+                list = new String[files.length];
+                for (int i = 0; i < files.length; i++) {
+                    list[i] = files[i].getName();
+                }
             }
-        });
-        String[] list= new String[files.length];
-        for(int i=0; i<files.length; i++) {
-            list[i] = files[i].getName();
         }
         return list;
     }

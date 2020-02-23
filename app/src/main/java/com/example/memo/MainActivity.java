@@ -80,30 +80,30 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter(itemList) ;
 
-        for(int i=0; i<titles.length; i++) {
-            File imgFile = new File("/data/data/com.example.memo/files/Images/"+titles[i]);
+        if(titles != null) {
+            for (int i = 0; i < titles.length; i++) {
+                File imgFile = new File("/data/data/com.example.memo/files/Images/" + titles[i]);
 
-            if(imgFile.exists()){
-                String[] images = mTextFileManager.loadImg(imgFile).split(" ");
-                imgFile = new File(images[0]);
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                adapter.addItem(titles[i].replace(".txt", ""), mTextFileManager.load(titles[i]), mTextFileManager.getDate(titles[i]), myBitmap);
+                if (imgFile.exists()) {
+                    String[] images = mTextFileManager.loadImg(imgFile).split(" ");
+                    imgFile = new File(images[0]);
+                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                    adapter.addItem(titles[i].replace(".txt", ""), mTextFileManager.load(titles[i]), mTextFileManager.getDate(titles[i]), myBitmap);
+                } else
+                    adapter.addItem(titles[i].replace(".txt", ""), mTextFileManager.load(titles[i]), mTextFileManager.getDate(titles[i]), null);
             }
 
-            else
-                adapter.addItem(titles[i].replace(".txt", ""), mTextFileManager.load(titles[i]), mTextFileManager.getDate(titles[i]), null);
+            Comparator<ListViewItem> textDate = new Comparator<ListViewItem>() {
+                @Override
+                public int compare(ListViewItem item1, ListViewItem item2) {
+                    return item2.getDate().compareTo(item1.getDate());         //날짜순으로 내림차순 정렬
+
+                }
+            };
+
+            Collections.sort(itemList, textDate);
+            listview.setAdapter(adapter);
         }
-
-        Comparator<ListViewItem> textDate = new Comparator<ListViewItem>() {
-            @Override
-            public int compare(ListViewItem item1, ListViewItem item2) {
-                return item2.getDate().compareTo(item1.getDate()) ;         //날짜순으로 내림차순 정렬
-
-            }
-        } ;
-
-        Collections.sort(itemList, textDate) ;
-        listview.setAdapter(adapter);
     }
 
     @Override
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPermissionListener(permissionListener)
                 .setRationaleMessage(getResources().getString(R.string.permission_2))
                 .setDeniedMessage(getResources().getString(R.string.permission_1))
-                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .check();
     }
 }
