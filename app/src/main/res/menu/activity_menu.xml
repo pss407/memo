@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <item
+        android:id="@+id/delete_image"
+        android:icon="@drawable/ic_delete_photo_24px"
+        app:showAsAction="always"
+        android:title="이미지 삭제" />
+
+    <item
+        android:icon="@drawable/ic_add_photo_alternate_24px"
+        app:showAsAction="always"
+        android:title="이미지 추가" >
+        <menu>
+            <item
+                android:id="@+id/add_image_gallery"
+                android:title="갤러리에서 추가"/>
+            <item
+                android:id="@+id/add_image_camera"
+                android:title="카메라에서 추가"/>
+            <item
+                android:id="@+id/add_image_url"
+                android:title="url로 추가"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_save_24px"
+        app:showAsAction="always|withText"
+        android:title="저장" />
+
+    <item
+        android:id="@+id/delete"
+        app:showAsAction="never"
+        android:title="삭제" />
+
+    <item
+        android:id="@+id/edit"
+        app:showAsAction="never"
+        android:title="편집" />
+
+</menu>

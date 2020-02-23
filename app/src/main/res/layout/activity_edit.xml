@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:weightSum="15"
+    tools:context="com.example.memo.EditActivity">
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:textStyle="bold"
+        android:hint="제목을 입력하세요."
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:paddingHorizontal="5dp"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="메모할 내용을 입력하세요."
+        android:background="@null"
+        android:paddingLeft="5dp"
+        android:paddingHorizontal="5dp"
+        android:layout_weight="9"/>
+
+    <Gallery
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+
+</LinearLayout>
