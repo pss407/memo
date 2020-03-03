@@ -11,7 +11,13 @@
 - 앱 예시 사진)
 
   ![메인화면이자 메모목록](https://user-images.githubusercontent.com/44769544/75769475-93cfe700-5d89-11ea-896b-8ae326329d46.jpg)
+  
+  > 메인화면이자 메모목록
 
   ![메인에서 오른쪽위의 새 메모 작성 누른 후 화면](https://user-images.githubusercontent.com/44769544/75769477-94687d80-5d89-11ea-877c-f0aeeac0d8e7.jpg)
 
+  > 메인에서 오른쪽위의 새 메모 작성 누른 후 화면
+
   ![이미지가 포함된 기존의 ](https://user-images.githubusercontent.com/44769544/75770028-8535ff80-5d8a-11ea-8868-f3129f6f4d93.jpg)
+
+  > 이미지가 포함된 
