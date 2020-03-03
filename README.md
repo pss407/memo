@@ -8,6 +8,8 @@
   - 이미지는 다중 첨부가 가능하다.
   - 첨부된 이미지 중 제일 앞의 이미지를 메모 리스트에서 썸네일로 보여줌.
 
+앱 예시 사진)
+
 ![메인화면이자 메모목록](https://user-images.githubusercontent.com/44769544/75769475-93cfe700-5d89-11ea-896b-8ae326329d46.jpg)
 
-![메인에서 오른쪽위의 새 메모 작성 누른 후 ](https://user-images.githubusercontent.com/44769544/75769477-94687d80-5d89-11ea-877c-f0aeeac0d8e7.jpg)
+![메인에서 오른쪽위의 새 메모 작성 누른 후 화면](https://user-images.githubusercontent.com/44769544/75769477-94687d80-5d89-11ea-877c-f0aeeac0d8e7.jpg)
