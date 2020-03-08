@@ -174,7 +174,7 @@ public class EditActivity extends AppCompatActivity {
                 galleryViewAdapter.notifyDataSetChanged();
                 break;
             }*/
-            //7. 구글 포토 앱으로 사진 첨부
+            //7. 앨범으로 사진 첨부
             case R.id.add_image_gallery: {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     try {
@@ -211,7 +211,7 @@ public class EditActivity extends AppCompatActivity {
         int index = imageList.size();
 
         switch (requestCode) {
-            //포토 앱에서 첨부할때
+            //앨범에서 첨부할때
             case REQUEST_TAKE_ALBUM: {
                 if (resultCode == Activity.RESULT_OK) {
                     // 멀티 선택을 지원하지 않는 기기에서는 getClipdata()가 없음 => getData()로 접근해야 함
